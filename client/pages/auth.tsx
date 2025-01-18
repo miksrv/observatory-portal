@@ -3,13 +3,13 @@
 import { API, ApiType } from '@/api'
 import { login } from '@/api/authSlice'
 import { useAppDispatch, useAppSelector } from '@/api/store'
-import { LOCAL_STORAGE } from '@/functions/constants'
-import useLocalStorage from '@/functions/hooks/useLocalStorage'
+import { LOCAL_STORAGE } from '@/tools/constants'
+import useLocalStorage from '@/tools/hooks/useLocalStorage'
 import { NextPage } from 'next'
 import { useRouter } from 'next/dist/client/router'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect } from 'react'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Spinner } from 'simple-react-ui-kit'
 
 interface AuthPageProps {}
 
@@ -57,9 +57,7 @@ const AuthPage: NextPage<AuthPageProps> = () => {
 
     return (
         <div>
-            <Dimmer active={true}>
-                <Loader content='Пожалуйста, подождите...' />
-            </Dimmer>
+            <Spinner />
         </div>
     )
 }

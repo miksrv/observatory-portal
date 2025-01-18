@@ -1,14 +1,14 @@
 import { API, ApiModel, useAppSelector } from '@/api'
 import { wrapper } from '@/api/store'
 import { sliceText } from '@/functions/helpers'
-import Container from '@/ui/container'
 import { GetServerSidePropsResult, NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
 import Markdown from 'react-markdown'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'simple-react-ui-kit'
 
+import AppLayout from '@/components/app-layout'
 import EventPhotoUploader from '@/components/event-photo-uploader/EventPhotoUploader'
 import PhotoGallery from '@/components/photo-gallery'
 
@@ -43,7 +43,7 @@ const StargazingItemPage: NextPage<StargazingItemPageProps> = ({
     }, [event?.photos])
 
     return (
-        <main>
+        <AppLayout>
             <NextSeo
                 title={`Астровыезд - ${event?.title}`}
                 description={sliceText(event?.content ?? '', 300)}
@@ -87,7 +87,6 @@ const StargazingItemPage: NextPage<StargazingItemPageProps> = ({
 
                     {user?.role === 'admin' && (
                         <Button
-                            fluid
                             onClick={handleUploadPhotoClick}
                             disabled={!!uploadingPhotos?.length}
                             style={{ marginBottom: 20 }}
@@ -110,7 +109,7 @@ const StargazingItemPage: NextPage<StargazingItemPageProps> = ({
                     />
                 </Container>
             )}
-        </main>
+        </AppLayout>
     )
 }
 

@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
-        "codeigniter4/framework": "^4.4",
+        "codeigniter4/framework": "^4.5",
         "firebase/php-jwt": "^6.9",
         "longman/telegram-bot": "^0.83.1"
     },
@@ -35,7 +35,7 @@
         "test": "phpunit",
         "serve": [
             "Composer\\Config::disableProcessTimeout",
-            "php spark serve"
+            "php -d upload_max_filesize=70M -d post_max_size=70M spark serve"
         ],
         "kill": "pkill -9 php",
         "migration:create": "php spark migrate:create",
